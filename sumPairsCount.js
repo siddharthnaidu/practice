@@ -26,7 +26,7 @@ const result = countPairsWithSum(arr, k);
 console.log(result); // Output: 3
 
 
-//////////////////////////////////////////////
+////////////////////////////////////////////// solution 2
 
 function AllPairsWithSum(arr, targetSum) {
     let count = 0;
@@ -58,3 +58,30 @@ function AllPairsWithSum(arr, targetSum) {
 }
 
 console.log('All pairs ',AllPairsWithSum(arr,k))
+
+
+//////////////////////////////////////// two pointer approach
+
+function findAllPairsWithSum(arr, k) {
+    arr.sort((a, b) => a - b);  // Sort the array
+    const pairs = [];
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left < right) {
+        const sum = arr[left] + arr[right];
+        if (sum === k) {
+            pairs.push([arr[left], arr[right]]);
+            left++;
+            right--;
+        } else if (sum < k) {
+            left++;  // Move the left pointer to increase the sum
+        } else {
+            right--; // Move the right pointer to decrease the sum
+        }
+    }
+
+    return pairs;
+}
+
+console.log('two pointer approach (duplicates occurances are not counted)',findAllPairsWithSum(arr,k))
