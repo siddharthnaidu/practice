@@ -40,3 +40,6 @@ function composite(...functions) {
     }
 
 }
+
+
+// https://www.youtube.com/watch?v=abbdJ4Yfm54&t=1660s -- 27th min

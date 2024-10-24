@@ -39,3 +39,24 @@ let x = currying(1)(2)(3)(); // note here if its not called in the end it will r
                             //  so call x() like this if needed checkomh typeof(x) == 'function'
 
 console.log(x)
+
+////////////////////////////////////////////
+// even simplest one 
+function easyCurry(fn) {
+    let num = []
+    return function x(...args) {
+
+        num = [...num, ...args]
+
+        if (num.length == fn.length) {
+            const res = fn(...num)
+            num = []
+            return res
+        } else {
+            return x
+        }
+    }
+}
+
+let curriedSum4 = easyCurry(join);
+console.log('curriedSum4',curriedSum4(1,2)(3))
