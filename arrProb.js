@@ -40,5 +40,16 @@ let unique = arr.reduce((acc, value) => {
 
 console.log("Unique:", unique);
 console.log("Duplicates:", dup);
-``
+`//////////////////
+improved version` //If a number appears more than twice, it will be added to dup multiple times. [1,1,1,2,3,3]
+
+let unique = arr.reduce((acc, value) => {
+  if (!acc.includes(value)) {
+    acc.push(value);
+  } else if (!dup.includes(value)) {
+    dup.push(value);
+  }
+  return acc;
+}, []);
+
 
